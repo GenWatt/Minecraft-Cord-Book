@@ -1,0 +1,40 @@
+.alert {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    padding: 5px;
+    border-radius: 5px;
+    color: white;
+    font-size: 1.2em;
+    transform-origin: right;
+    transition: all 0.6s;
+    z-index: 2;
+  }
+  
+  .error {
+    background-color: red;
+  }
+  
+  .success {
+    background-color: green;
+  }
+  
+  .close-msg {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: transparent;
+    border:none;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    padding: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    cursor: pointer;
+    outline: none;
+  }

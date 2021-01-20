@@ -1,0 +1,126 @@
+.item {
+    display: grid;
+    grid-template-columns: 100px 1fr 100px;
+    grid-template-rows: 30px 1fr;
+    width: 100%;
+    padding: 5px;
+    background-color: var(--secondary-color);
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+    border-radius: 5px;
+    margin-top: 10px;
+    column-gap: 5px;
+    transform-origin: left;
+}
+
+.item:first-child {
+    margin-top: 0;
+}
+
+.show-cords-list-enter-active {
+    animation: scaleX-up-down 0.6s ease;
+}
+
+.show-cords-list-leave-active {
+    animation: scaleX-up-down 0.6s ease reverse;
+}
+
+@keyframes scaleX-up-down {
+    0% {
+        transform: scaleX(0) translateX(800px);
+    }
+    100% {
+        transform: scaleX(1) translateX(0);
+    }
+}
+
+.screenshot {
+    width: 100%;
+    height: 80px;
+    grid-row: 1/4;
+    background-color: grey;
+}
+
+.edit {
+    background-color: transparent;
+    position: relative;
+    transition: transform 0.5s ease;
+}
+
+.edit::before {
+    content: "";
+    position: absolute;
+    bottom: 2px;
+    left: 0;
+    width: 35px;
+    height: 2px;
+    background-color: green;
+    transition: transform 0.5s ease;
+}
+
+.edit:hover {
+    transform: translateY(-5px);
+}
+
+.edit:hover::before {
+    transform: scaleX(1.2);
+}
+
+.del {
+    background-color: red;
+    color: white;
+    transition: transform 0.5s ease;
+}
+
+.del:hover {
+    transform: scale(1.1);
+}
+
+.item-header {
+    position: relative;
+}
+
+.item-header::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: calc(50% + 50px);
+    width: 100%;
+    height: 1px;
+    background-color: rgba(0, 128, 0, 0.596);
+    transform: translateX(-50%);
+}
+
+.desc {
+    grid-column: 2/3;
+    margin-top: 5px;
+}
+
+.cord-box {
+    width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    grid-column: 2/4;
+}
+
+.x-cord {
+    color: red;
+}
+
+.y-cord {
+    color: green;
+}
+
+.z-cord {
+    color: blue;
+}
+
+@media screen and (max-width:560px) {
+    .cord-box {
+        width: 100%;
+    }
+    .item {
+        grid-template-columns: 70px 1fr 100px;
+    }
+}
