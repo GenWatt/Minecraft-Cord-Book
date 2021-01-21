@@ -1,6 +1,10 @@
 <template>
   <div class="overlay">
-    <form class="cord-form" @submit.prevent="submitCords">
+    <form
+      class="cord-form"
+      @submit.prevent="submitCords"
+      :class="disabled ? 'no-events' : ''"
+    >
       <button class="btn close-form" @click.prevent="hideForm">
         <i class="fas fa-times"></i>
       </button>
@@ -50,6 +54,7 @@
         type="submit"
         class="add-cord btn"
         :value="edited ? 'Edit Cord' : 'Add Cords'"
+        :disabled="disabled"
       />
     </form>
   </div>
@@ -75,6 +80,7 @@ export default {
       img: "",
       id: "",
     },
+    disabled: false,
   }),
   created() {
     if (this.edited) {
@@ -86,6 +92,9 @@ export default {
   methods: {
     submitCords() {
       if (!this.checkErrors()) return;
+      this.disabled = true;
+      this.hideForm();
+
       if (this.edited) {
         this.$store.commit("editCord", this.cordsPack);
         return this.$store.commit("setMessage", {
@@ -93,11 +102,18 @@ export default {
           type: "success",
         });
       }
+
       this.cordsPack.id = uuid();
+      if (this.isIdDuplicated(this.cordsPack.id)) return;
       this.$store.commit("addCord", this.cordsPack);
     },
     addImg(url) {
       this.cordsPack.img = url;
+    },
+    isIdDuplicated(itemId) {
+      if (this.$store.getters.getCords.filter(({ id }) => id === itemId).length)
+        return true;
+      else return false;
     },
     checkErrors() {
       const { title, xCord, zCord, yCord } = this.cordsPack;

@@ -17,23 +17,6 @@
     margin-top: 0;
 }
 
-.show-cords-list-enter-active {
-    animation: scaleX-up-down 0.6s ease;
-}
-
-.show-cords-list-leave-active {
-    animation: scaleX-up-down 0.6s ease reverse;
-}
-
-@keyframes scaleX-up-down {
-    0% {
-        transform: scaleX(0) translateX(800px);
-    }
-    100% {
-        transform: scaleX(1) translateX(0);
-    }
-}
-
 .btn-circle {
     padding: 4px;
     border-radius: 50%;

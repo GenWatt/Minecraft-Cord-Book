@@ -7,8 +7,16 @@
     <Search :showAddCordForm="showAddCordForm" />
 
     <ul class="list" :class="searchCords.length >= 5 ? 'scroll' : ''">
+      <!--when is no cord item -->
       <p class="no-cords" v-if="!searchCords.length">No cords saved!</p>
-      <transition-group name="show-cords-list" v-if="searchCords.length">
+      <!--when is one cord item -->
+      <transition name="show-cords-list" v-if="searchCords.length === 1">
+        <li class="item-box" v-for="cord in searchCords" :key="cord.id">
+          <Cord :cord="cord" :editCord="editCord" />
+        </li>
+      </transition>
+      <!--when is more than one cord item -->
+      <transition-group name="show-cords-list" v-if="searchCords.length > 1">
         <li class="item-box" v-for="cord in searchCords" :key="cord.id">
           <Cord :cord="cord" :editCord="editCord" />
         </li>
