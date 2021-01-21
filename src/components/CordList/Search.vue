@@ -8,7 +8,7 @@
       v-model="search"
       @keyup="searchCord"
     />
-    <button class="btn add-to-do" @click="showAddCordForm">+</button>
+    <button class="btn btn-circle add-to-do" @click="showAddCordForm">+</button>
   </section>
 </template>
 <script>

@@ -1,7 +1,7 @@
 <template>
   <div class="overlay">
     <form class="cord-form" @submit.prevent="submitCords">
-      <button class="close-form" @click.prevent="hideForm">
+      <button class="btn close-form" @click.prevent="hideForm">
         <i class="fas fa-times"></i>
       </button>
       <h1 class="cord-header">Cord Form</h1>
@@ -48,7 +48,7 @@
       <FileReader :addImg="addImg" :image="cordsPack.img" />
       <input
         type="submit"
-        class="add-cord"
+        class="add-cord btn"
         :value="edited ? 'Edit Cord' : 'Add Cords'"
       />
     </form>

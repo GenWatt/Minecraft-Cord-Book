@@ -9,8 +9,10 @@
     />
     <h4 class="item-header">{{ cord.title }}</h4>
     <div class="box">
-      <button class="btn edit" @click="editCord(cord.id)">Edit</button>
-      <button class="btn del" @click="deleteCord(cord.id)">
+      <button class="btn btn-circle edit" @click="editCord(cord.id)">
+        Edit
+      </button>
+      <button class="btn btn-circle del" @click="deleteCord(cord.id)">
         <i class="fas fa-times"></i>
       </button>
     </div>

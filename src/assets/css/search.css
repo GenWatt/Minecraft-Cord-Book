@@ -1,56 +1,56 @@
 .search-box {
-  width: 700px;
-  min-height: 40px;
-  background-color: var(--primary-color);
-  backdrop-filter: blur(40px);
-  -webkit-backdrop-filter: blur(40px);
-  border-radius: 5px;
-  margin-bottom: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    width: 700px;
+    min-height: 40px;
+    background-color: var(--primary-color);
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+    border-radius: 5px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .search-input {
-  margin-left: 20px;
-  border-radius: 5px;
-  border: 2px solid green;
-  background-color: rgba(156, 240, 156, 0.541);
-  padding: 4px;
-  outline: none;
-  transition: transform 0.5s ease-in-out;
-  transform-origin: left;
+    margin-left: 20px;
+    border-radius: 5px;
+    border: 2px solid var(--success-color);
+    background-color: rgba(156, 240, 156, 0.541);
+    padding: 4px;
+    outline: none;
+    transition: transform 0.5s ease-in-out;
+    transform-origin: left;
 }
 
 .search-input:focus {
-  transform: scaleX(1.2);
+    transform: scaleX(1.2);
 }
 
 .add-to-do {
-  margin-right: 20px;
-  background-color: rgba(156, 240, 156, 0.541);
-  border: 2px solid green;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.4em;
-  color: white;
-  transition: transform 0.3s ease-out;
+    margin-right: 20px;
+    background-color: rgba(156, 240, 156, 0.541);
+    border: 2px solid var(--success-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: var(--font-medium);
+    color: var(--font-color);
+    transition: transform 0.3s ease-out;
 }
 
 .add-to-do:hover,
 .add-to-do:focus {
-  transform: scale(1.1);
+    transform: scale(1.1);
 }
 
-@media screen and (max-width:700px){
-  .search-box{
-    width: 100%;
-  }
+@media screen and (max-width:700px) {
+    .search-box {
+        width: 100%;
+    }
 }
 
-@media screen and (max-width:349px){
-  .search-box{
-    width: 310px;
-  }
+@media screen and (max-width:349px) {
+    .search-box {
+        width: 310px;
+    }
 }
