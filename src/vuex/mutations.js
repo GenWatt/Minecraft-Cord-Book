@@ -1,7 +1,7 @@
 import { setLocalStorage } from "../util/setLocalStorage.js";
 
 const mutations = {
-    getAllCords: (state, payload) => (state.cords = payload),
+    getAllCords: (state, payload) => (state.cords = payload || []),
     addCord: (state, payload) => {
         state.cords = [...state.cords, payload];
         setLocalStorage("cords", state.cords);
