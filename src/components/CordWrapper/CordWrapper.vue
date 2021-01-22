@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="search-wrapper">
     <transition name="show">
       <Form v-if="getShowForm" />
     </transition>
@@ -21,3 +21,11 @@ export default {
   components: { Search, Form },
 };
 </script>
+<style scoped>
+.search-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+</style>
