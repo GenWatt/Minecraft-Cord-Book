@@ -11,6 +11,7 @@
     margin-top: 10px;
     column-gap: 5px;
     transform-origin: left;
+    color: var(--theme-font-color);
 }
 
 .item:first-child {
@@ -35,6 +36,7 @@
     background-color: transparent;
     position: relative;
     transition: transform 0.5s ease;
+    color: var(--theme-font-color);
 }
 
 .edit::before {
@@ -74,7 +76,7 @@
     content: "";
     position: absolute;
     bottom: 0;
-    left: calc(50% + 50px);
+    left: calc(50%);
     width: 100%;
     height: 1px;
     background-color: rgba(0, 128, 0, 0.596);

@@ -13,13 +13,17 @@
 </template>
 <script>
 import "../../assets/css/search.css";
+
 export default {
   name: "Search",
-  props: ["showAddCordForm"],
   data: () => ({ search: "" }),
   methods: {
     searchCord() {
       this.$store.commit("searchCord", this.search.toUpperCase());
+    },
+
+    showAddCordForm() {
+      this.$store.commit("toggleForm");
     },
   },
 };

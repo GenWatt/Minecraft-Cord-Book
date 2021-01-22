@@ -17,7 +17,8 @@ const mutations = {
         setLocalStorage("cords", state.cords);
     },
     searchCord: (state, payload) => (state.search = payload),
-
+    toggleForm: (state) => state.showForm = !state.showForm,
+    editedCord: (state, payload) => state.edited = payload
 }
 
 export default mutations;

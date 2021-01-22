@@ -5,16 +5,18 @@ import getters from "./getters.js";
 
 Vue.use(Vuex);
 const state = {
-  cords: [],
-  alert: {
-    message: "",
-    type: "",
-  },
-  search: "",
+    cords: [],
+    alert: {
+        message: "",
+        type: "",
+    },
+    search: "",
+    edited: "",
+    showForm: false
 }
 
 export const store = new Vuex.Store({
-  state,
-  mutations,
-  getters,
+    state,
+    mutations,
+    getters,
 });

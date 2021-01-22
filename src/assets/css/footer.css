@@ -5,6 +5,7 @@ footer {
     padding: 5px;
     border-radius: 5px;
     margin: 10px 10px 0 10px;
+    color: var(--theme-font-color);
 }
 
 .contact-header {
@@ -21,7 +22,7 @@ footer {
 }
 
 a {
-    color: black;
+    color: var(--theme-font-color);
     font-size: var(--font-very-small);
     position: relative;
     text-decoration: none;

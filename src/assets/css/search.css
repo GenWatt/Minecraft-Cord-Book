@@ -2,6 +2,7 @@
     width: 700px;
     min-height: 40px;
     background-color: var(--primary-color);
+    box-shadow: var(--box-shadow);
     backdrop-filter: blur(40px);
     -webkit-backdrop-filter: blur(40px);
     border-radius: 5px;
@@ -20,6 +21,10 @@
     outline: none;
     transition: transform 0.5s ease-in-out;
     transform-origin: left;
+}
+
+.search-input::placeholder {
+    color: var(--theme-font-color);
 }
 
 .search-input:focus {
@@ -45,12 +50,6 @@
 
 @media screen and (max-width:700px) {
     .search-box {
-        width: 100%;
-    }
-}
-
-@media screen and (max-width:349px) {
-    .search-box {
-        width: 310px;
+        width: 98%;
     }
 }

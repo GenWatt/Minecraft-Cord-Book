@@ -1,0 +1,81 @@
+:root {
+    --primary-color: rgba(255, 255, 255, 0.295);
+    --secondary-color: rgb(255, 255, 255);
+    --input-color: rgba(156, 240, 156, 0.541);
+    --danger-color: red;
+    --success-color: green;
+    --font-large: 3em;
+    --font-medium: 1.4em;
+    --font-small: 1.1em;
+    --font-very-small: 0.9em;
+    --font-color: white;
+    --theme-font-color: black;
+    --box-shadow: 0 0 10px 2px rgba(156, 240, 156, 0.822)
+}
+
+@media (prefers-color-scheme: light) {
+     :root {
+        --primary-color: rgba(255, 255, 255, 0.295);
+        --secondary-color: rgb(255, 255, 255);
+        --input-color: rgba(156, 240, 156, 0.541);
+        --theme-font-color: black;
+        --x-cord-color: red;
+        --y-cord-color: green;
+        --z-cord-color: blue;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+     :root {
+        --primary-color: rgba(27, 26, 26, 0.185);
+        --secondary-color: rgb(29, 28, 28);
+        --input-color: rgba(74, 87, 74, 0.349);
+        --font-color: white;
+        --theme-font-color: white;
+        --x-cord-color: rgb(235, 74, 74);
+        --y-cord-color: rgb(66, 211, 66);
+        --z-cord-color: rgb(55, 55, 233);
+    }
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-image: url("../bg.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow-x: hidden;
+}
+
+#app {
+    min-height: 100vh;
+    display: grid;
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+.btn {
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+.message-enter-active,
+.message-leave-active {
+    transition: opacity 0.3s;
+}
+
+.message-leave-to,
+.message-enter {
+    opacity: 0;
+}
+
+@media screen and (max-width: 400px) {
+    html {
+        font-size: 14px;
+    }
+}

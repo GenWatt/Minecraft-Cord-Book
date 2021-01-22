@@ -1,66 +1,36 @@
 <template>
   <main>
-    <transition name="show">
-      <Form v-if="showForm" :hideForm="hideForm" :edited="edited" />
-    </transition>
-
-    <Search :showAddCordForm="showAddCordForm" />
-
-    <ul class="list" :class="searchCords.length >= 5 ? 'scroll' : ''">
-      <!--when is no cord item -->
-      <p class="no-cords" v-if="!searchCords.length">No cords saved!</p>
+    <ul class="list" :class="cords.length >= 5 ? 'scroll' : ''">
       <!--when is one cord item -->
-      <transition name="show-cords-list" v-if="searchCords.length === 1">
-        <li class="item-box" v-for="cord in searchCords" :key="cord.id">
+      <transition name="show-cords-list" v-if="cords.length === 1">
+        <li class="item-box" v-for="cord in cords" :key="cord.id">
           <Cord :cord="cord" :editCord="editCord" />
         </li>
       </transition>
       <!--when is more than one cord item -->
-      <transition-group name="show-cords-list" v-if="searchCords.length > 1">
-        <li class="item-box" v-for="cord in searchCords" :key="cord.id">
+      <transition-group name="show-cords-list" v-else-if="cords.length > 1">
+        <li class="item-box" v-for="cord in cords" :key="cord.id">
           <Cord :cord="cord" :editCord="editCord" />
         </li>
       </transition-group>
+      <!--when is no cord item -->
+      <p class="no-cords" v-else>No cords saved!</p>
     </ul>
   </main>
 </template>
 
 <script>
-import Form from "../Form";
-import Search from "./Search";
 import Cord from "./Cord";
 import "../../assets/css/cordList.css";
 
 export default {
   name: "CordList",
-  components: { Form, Search, Cord },
-  computed: {
-    getCords() {
-      return this.$store.getters.getCords;
-    },
-    getSearch() {
-      return this.$store.getters.getSearch;
-    },
-    searchCords() {
-      return this.getCords.filter(({ title }) =>
-        title.toUpperCase().includes(this.getSearch)
-      );
-    },
-  },
-  data: () => ({ showForm: false, edited: "" }),
+  components: { Cord },
+  props: ["cords"],
   methods: {
-    showAddCordForm() {
-      this.showForm = true;
-    },
-
-    hideForm() {
-      this.showForm = false;
-      this.edited = "";
-    },
-
     editCord(id) {
-      this.edited = id;
-      this.showForm = true;
+      this.$store.commit("editedCord", id);
+      this.$store.commit("toggleForm");
     },
   },
 };

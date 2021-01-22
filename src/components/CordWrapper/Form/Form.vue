@@ -1,10 +1,6 @@
 <template>
   <div class="overlay">
-    <form
-      class="cord-form"
-      @submit.prevent="submitCords"
-      :class="disabled ? 'no-events' : ''"
-    >
+    <form class="cord-form" @submit.prevent="submitCords">
       <button class="btn close-form" @click.prevent="hideForm">
         <i class="fas fa-times"></i>
       </button>
@@ -17,44 +13,12 @@
         id="title"
         v-model="cordsPack.title"
       />
-      <div class="cords-inputs">
-        <div class="form-box">
-          <label for="x-cord">X cord</label>
-          <input
-            class="cord-input cord"
-            type="number"
-            name="x-cord"
-            v-model="cordsPack.xCord"
-            id="x-cord"
-          />
-        </div>
-        <div class="form-box">
-          <label for="y-cord">Y cord</label>
-          <input
-            class="cord-input cord"
-            type="number"
-            name="y-cord"
-            v-model="cordsPack.yCord"
-            id="y-cord"
-          />
-        </div>
-        <div class="form-box">
-          <label for="z-cord">Z cord</label>
-          <input
-            class="cord-input cord"
-            type="number"
-            name="z-cord"
-            v-model="cordsPack.zCord"
-            id="z-cord"
-          />
-        </div>
-      </div>
+      <CordsInput :cordsPack="cordsPack" />
       <FileReader :addImg="addImg" :image="cordsPack.img" />
       <input
         type="submit"
         class="add-cord btn"
         :value="edited ? 'Edit Cord' : 'Add Cords'"
-        :disabled="disabled"
       />
     </form>
   </div>
@@ -62,15 +26,16 @@
 <script>
 import Vue from "vue";
 import FileReader from "./FileReader.vue";
-import "../assets/css/form.css";
+import CordsInput from "./CordInputs";
+import "../../../assets/css/form.css";
 import { v4 as uuid } from "uuid";
 
 export default {
   name: "Form",
   components: {
     FileReader,
+    CordsInput,
   },
-  props: ["hideForm", "edited"],
   data: () => ({
     cordsPack: {
       title: "",
@@ -79,10 +44,17 @@ export default {
       zCord: "",
       img: "",
       id: "",
+      edited: "",
     },
-    disabled: false,
   }),
+  computed: {
+    getEdited() {
+      return this.$store.getters.getEdited;
+    },
+  },
   created() {
+    this.edited = this.getEdited;
+
     if (this.edited) {
       const editedCord = this.$store.getters.getCord(this.edited);
 
@@ -90,10 +62,12 @@ export default {
     }
   },
   methods: {
+    hideForm() {
+      this.$store.commit("toggleForm");
+      this.$store.commit("editedCord", "");
+    },
     submitCords() {
       if (!this.checkErrors()) return;
-      this.disabled = true;
-      this.hideForm();
 
       if (this.edited) {
         this.$store.commit("editCord", this.cordsPack);
@@ -106,6 +80,8 @@ export default {
       this.cordsPack.id = uuid();
       if (this.isIdDuplicated(this.cordsPack.id)) return;
       this.$store.commit("addCord", this.cordsPack);
+
+      this.hideForm();
     },
     addImg(url) {
       this.cordsPack.img = url;

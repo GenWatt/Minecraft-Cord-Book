@@ -23,5 +23,6 @@ header {
   background-color: var(--primary-color);
   backdrop-filter: blur(40px);
   -webkit-backdrop-filter: blur(40px);
+  color: var(--theme-font-color);
 }
 </style>

@@ -15,7 +15,7 @@
   </div>
 </template>
 <script>
-import "../assets/css/fileReader.css";
+import "../../../assets/css/fileReader.css";
 export default {
   name: "FileReader",
   props: ["addImg", "image"],
