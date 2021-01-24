@@ -7,16 +7,20 @@
   </aside>
 </template>
 <script>
-import "../assets/css/message.css";
+import "./message.css";
 export default {
   name: "Message",
+  data: () => ({ timeout: null }),
   computed: {
     getMessage() {
       return this.$store.getters.getMessage;
     },
   },
   created() {
-    setTimeout(() => this.closeMessage(), 5000);
+    this.timeout = setTimeout(() => this.closeMessage(), 5000);
+  },
+  beforeDestroy() {
+    clearTimeout(this.timeout);
   },
   methods: {
     closeMessage() {

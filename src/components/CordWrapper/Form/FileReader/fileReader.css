@@ -20,6 +20,10 @@
     color: var(--font-color);
 }
 
+.screenshot-label i {
+    color: var(--theme-font-color);
+}
+
 .screenshot-label:hover i,
 .screenshot-label:focus i {
     animation: scale-up-down 0.8s ease infinite;

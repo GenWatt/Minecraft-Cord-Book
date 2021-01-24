@@ -20,8 +20,8 @@
 </template>
 
 <script>
-import Cord from "./Cord";
-import "../../assets/css/cordList.css";
+import Cord from "./Cord/Cord";
+import "./cordList.css";
 
 export default {
   name: "CordList",

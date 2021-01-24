@@ -12,7 +12,7 @@
   </section>
 </template>
 <script>
-import "../../assets/css/search.css";
+import "./search.css";
 
 export default {
   name: "Search",

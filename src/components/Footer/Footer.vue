@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import "../assets/css/footer.css";
+import "./footer.css";
 export default {
   name: "Footer",
 };

@@ -5,7 +5,13 @@ import getters from "./getters.js";
 
 Vue.use(Vuex);
 const state = {
-    cords: [],
+    places: ['Earth', 'Nether', 'End'],
+    currentPlace: 'earth',
+    cords: {
+        earth: [],
+        nether: [],
+        end: []
+    },
     alert: {
         message: "",
         type: "",

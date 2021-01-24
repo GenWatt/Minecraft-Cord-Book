@@ -25,9 +25,9 @@
 </template>
 <script>
 import Vue from "vue";
-import FileReader from "./FileReader.vue";
-import CordsInput from "./CordInputs";
-import "../../../assets/css/form.css";
+import FileReader from "./FileReader/FileReader";
+import CordsInput from "./CordInputs/CordInputs";
+import "./form.css";
 import { v4 as uuid } from "uuid";
 
 export default {
@@ -50,6 +50,12 @@ export default {
   computed: {
     getEdited() {
       return this.$store.getters.getEdited;
+    },
+    getCurrentPlace() {
+      return this.$store.getters.getCurrentPlace;
+    },
+    getCords() {
+      return this.$store.getters.getCords;
     },
   },
   created() {
@@ -87,7 +93,10 @@ export default {
       this.cordsPack.img = url;
     },
     isIdDuplicated(itemId) {
-      if (this.$store.getters.getCords.filter(({ id }) => id === itemId).length)
+      if (
+        this.getCords[this.getCurrentPlace].filter(({ id }) => id === itemId)
+          .length
+      )
         return true;
       else return false;
     },

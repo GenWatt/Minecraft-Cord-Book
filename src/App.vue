@@ -3,31 +3,39 @@
     <transition name="message">
       <Message v-if="getMessage.message" />
     </transition>
-    <Header />
+    <Header :appName="appName" />
     <CordWrapper />
+    <SetPlaces />
     <CordList :cords="searchCords" />
     <Footer />
   </div>
 </template>
 
 <script>
-import Header from "./components/Header.vue";
-import CordList from "./components/CordList/CordList.vue";
-import Footer from "./components/Footer.vue";
-import Message from "./components/Message";
+import Message from "./components/Message/Message";
+import Header from "./components/Header/Header";
 import CordWrapper from "./components/CordWrapper/CordWrapper.vue";
-import "./assets/css/app.css";
+import SetPlaces from "./components/SetPlaces/SetPlaces";
+import CordList from "./components/CordList/CordList.vue";
+import Footer from "./components/Footer/Footer";
+
+import "./app.css";
 
 export default {
   name: "App",
+  data: () => ({ appName: "Minecraft Cord Book" }),
   components: {
     Header,
     CordList,
     Footer,
     Message,
     CordWrapper,
+    SetPlaces,
   },
   computed: {
+    getCurrentPlace() {
+      return this.$store.getters.getCurrentPlace;
+    },
     getMessage() {
       return this.$store.getters.getMessage;
     },
@@ -38,14 +46,17 @@ export default {
       return this.$store.getters.getSearch;
     },
     searchCords() {
-      return this.getCords.filter(({ title }) =>
-        title.toUpperCase().includes(this.getSearch)
-      );
+      const currentPlace = this.getCurrentPlace;
+      if (this.getCords[currentPlace].length)
+        return this.getCords[currentPlace].filter(({ title }) =>
+          title.toUpperCase().includes(this.getSearch)
+        );
+      else return [];
     },
   },
   created() {
-    const cords = localStorage.getItem("cords");
-    this.$store.commit("getAllCords", JSON.parse(cords));
+    const savedCords = localStorage.getItem("cords");
+    this.$store.commit("getAllCords", JSON.parse(savedCords));
   },
 };
 </script>

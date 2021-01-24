@@ -4,7 +4,7 @@
     <img
       class="screenshot"
       v-if="!cord.img"
-      src="../../assets/noimage.png"
+      src="../../../assets/noimage.png"
       alt="screenshot"
     />
     <h4 class="item-header">{{ cord.title }}</h4>
@@ -25,7 +25,7 @@
   </div>
 </template>
 <script>
-import "../../assets/css/cord.css";
+import "./cord.css";
 export default {
   name: "Cord",
   props: ["cord", "editCord"],

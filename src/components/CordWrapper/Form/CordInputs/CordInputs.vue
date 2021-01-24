@@ -34,6 +34,7 @@
 </template>
 
 <script>
+import "./cordInputs.css";
 export default {
   name: "CordInputs",
   props: ["cordsPack"],

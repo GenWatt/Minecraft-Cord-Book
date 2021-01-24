@@ -9,7 +9,7 @@
 
 <script>
 import Form from "./Form/Form";
-import Search from "./Search";
+import Search from "./Search/Search";
 
 export default {
   name: "CordWrapper",

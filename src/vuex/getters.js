@@ -1,10 +1,12 @@
 const getters = {
     getCords: ({ cords }) => cords,
     getMessage: ({ alert }) => alert,
-    getCord: ({ cords }) => payload => cords.filter(({ id }) => id === payload)[0],
+    getCord: (state) => payload => state.cords[state.currentPlace].filter(({ id }) => id === payload)[0],
     getSearch: ({ search }) => search,
     getShowForm: ({ showForm }) => showForm,
-    getEdited: ({ edited }) => edited
+    getEdited: ({ edited }) => edited,
+    getPlaces: ({ places }) => places,
+    getCurrentPlace: ({ currentPlace }) => currentPlace
 }
 
 export default getters;
